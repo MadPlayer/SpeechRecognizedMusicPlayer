@@ -1,3 +1,3 @@
 # SpeechRecognizedMusicPlayer
-
-#this is beta ver 1
+this is beta ver  
+[Post](https://madplayer.github.io/python/ai/Voice-Recognized-Music-Player/)
