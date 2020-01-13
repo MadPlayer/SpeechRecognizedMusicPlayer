@@ -10,4 +10,4 @@ with mic as source:
     print(tmp)
     target = choice.search(tmp)
     print(target)
-    os.system('aplay ' + target + "")
+    os.system('cvlc ' + target + "")
