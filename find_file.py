@@ -15,7 +15,11 @@ class choice:
         ans = ''
         l = len(self.name)
         for i in range(l - 1):
-            ans += (self.name[i] + '\ ')
+            if self.name[i] == " ": 
+                print(self.name[i])
+                ans += '\\ '
+            else:
+                ans += self.name[i]
 
         ans += self.name[l - 1]
         return ans
@@ -33,3 +37,4 @@ class choice:
                 music.refresh(seq.ratio(), audio)
 
         return music.get()
+
