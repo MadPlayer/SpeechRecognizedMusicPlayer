@@ -39,7 +39,7 @@ int play_song(Song* song){
 				return 1;
 			}
 			else if(child == 0){//child
-				char *const argv[] = { "python3", "SRplay.py", "play" };
+				char *const argv[] = { "python3", "SRplay.py", "play", NULL };
 
 				close(fd[0]);//close read
 				dup2(fd[1], STDOUT_FILENO);//make executed process have stdout stream as pipe write stream
@@ -77,6 +77,7 @@ int stop_song(Song* song){
 int get_command(char cmd[100]){
 	int fd[2];
 	pid_t child;
+	int i;
 
 	pipe(fd);
 	child = fork();
@@ -88,7 +89,10 @@ int get_command(char cmd[100]){
 		close(fd[1]);//close write
 		
 		streamR = fdopen(fd[0], "r");
-		fscanf(streamR, "%s", cmd);
+		for(i = 0; i < 4; i++){
+			fscanf(streamR, "%s", cmd);
+			printf("%s\n", cmd);
+		}
 		waitpid(child, NULL, 0);
 
 		fclose(streamR);
@@ -96,7 +100,7 @@ int get_command(char cmd[100]){
 		return 1;
 	}
 	else if(child == 0){//child
-		 char *const argv[] = { "python3", "SRplay.py", "cmd" };
+		char *const argv[] = { "python3", "SRplay.py", "cmd", NULL };
 
 		close(fd[0]);//close read
 		dup2(fd[1], STDOUT_FILENO);//make executed process have stdout stream as pipe write stream
