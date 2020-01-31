@@ -89,12 +89,10 @@ int get_command(char cmd[100]){
 		close(fd[1]);//close write
 		
 		streamR = fdopen(fd[0], "r");
-		for(i = 0; i < 4; i++){
-			fscanf(streamR, "%s", cmd);
-			printf("%s\n", cmd);
-		}
+		fscanf(streamR, "%s", cmd);
+		printf("%s\n", cmd);
+		
 		waitpid(child, NULL, 0);
-
 		fclose(streamR);
 
 		return 1;
