@@ -35,6 +35,7 @@ int play_song(Song* song){
 				song -> pid = child;
 
 				fclose(streamR);
+				printf("end play");
 
 				return 1;
 			}

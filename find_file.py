@@ -21,6 +21,6 @@ class choice:
         return target.name
 
     def search(name, target_list):
-        return search([name], target_list)
+        return choice.search_list([name], target_list)
 
 

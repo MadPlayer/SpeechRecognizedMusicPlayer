@@ -25,7 +25,7 @@ with mic as source:
     elif "play" in sys.argv :
         file_list = os.listdir()
         audio_list = [val for val in file_list if val.endswith((".wav", ".mp3", ".flac"))]
-        name_list = [name + '.wav', name + '.mp3', name + '.flac']
-        music_name = choice.search_list(name_list, audio_list)
+        #name_list = [name + '.wav', name + '.mp3', name + '.flac']
+        music_name = choice.search_list(tmp, audio_list)
         print(music_name)
         os.execv("/usr/bin/cvlc", ["cvlc", music_name])
